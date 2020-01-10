@@ -7,8 +7,19 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    position: relative;
 }
 
 canvas {
     border: 2px solid white;
+}
+
+.help {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem;
+    font-size: 3rem;
+    color: white;
 }
