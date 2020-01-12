@@ -93,7 +93,7 @@ function changeDirection(event) {
 }
 
 function randomFoodCoords(min, max) {
-    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
+    return Math.round((Math.random() * (max - min) + min) / 20) * 20;
 }
 
 function createFood() {
@@ -144,8 +144,8 @@ function main() {
 let firstInvoke = true;
 function startGame(e) {
     const startOn = 13;
-    let isStart = (startOn === e.keyCode);
-    if (isStart && firstInvoke) {
+    let isStart = (startOn === e.keyCode && firstInvoke);
+    if (isStart) {
         main();
         firstInvoke = false;
     }
