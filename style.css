@@ -8,18 +8,42 @@ body {
     padding: 0;
     height: 100vh;
     position: relative;
+    color:white;
 }
 
 canvas {
     border: 2px solid white;
 }
 
-.help {
+.help, .games-speed-label {
     padding: 0;
     margin: 0;
+    font-size: calc(1vw + 0.7rem);
+}
+
+.gameSet {
     position: absolute;
-    top: 1.5rem;
+    top: 1rem;
     left: 1rem;
-    font-size: 3rem;
+}
+
+#gameSpeed {
+    width: 200px;
     color: white;
+    border: none;
+    background-color: transparent;
+    font-size: calc(0.7vw + 0.7rem);
+}
+
+/*HIDE ARROWS ON INPUT NUMBER FIELDS*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }

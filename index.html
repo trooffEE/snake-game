@@ -9,7 +9,12 @@
 </head>
 <body>
     <canvas id="gameCanvas">&lt;</canvas>
-    <p class="help">Press Space to end the Game</p>
+    <div class="gameSet" id="gameSet">
+        <p class="help">Press Space to end the Game or Enter to start</p>
+        <label class="games-speed-label">Game Speed (ms):
+            <input type="number" name="" id="gameSpeed">
+        </label>
+    </div>
     <p style="display: none;">Snake were made by Vadim Spicyn followed by tutorial on <a href="https://www.freecodecamp.org/news/think-like-a-programmer-how-to-build-snake-using-only-javascript-html-and-css-7b1479c3339e/">freeCodeCamp</a></p>
     <script defer src="main.js"></script>
 </body>
