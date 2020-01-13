@@ -9,12 +9,23 @@ let foodX, foodY;
 
 let customDelay = document.getElementById("gameSpeed");
 customDelay.value = "100";
+let score = 0; 
 let gameSet = document.getElementById("gameSet");
 let gameCanvas = document.getElementById("gameCanvas");
 let ctx = gameCanvas.getContext("2d");
 
-gameCanvas.width = document.body.clientWidth - 4;
-gameCanvas.height = document.body.clientHeight - 4;
+
+/* FIX NOTE:
+   Doesn't work because some important calculations produce 
+   inaccurate value 
+   (snake's head position and food coords aren't the same 
+   when snake eats an apple)
+*/
+// gameCanvas.width = document.body.clientWidth - 4;
+// gameCanvas.height = document.body.clientHeight - 4;
+
+gameCanvas.width = 600;
+gameCanvas.height = 600;
 
 let snake = [
     { x: gameCanvas.width / 2 - 0, y: gameCanvas.height / 2 },
@@ -37,8 +48,11 @@ function advanceSnake() {
     const head = { x: snake[0].x + dx, y: snake[0].y + dy};
     snake.unshift(head);
     let didEatFood = snake[0].x === foodX && snake[0].y === foodY;
-    if (didEatFood) { 
+    if (didEatFood) {
+        score += 10;
+        document.getElementById("score").innerText = score; 
         createFood();
+        // updating score
     } else {
         snake.pop();
     }
@@ -126,10 +140,24 @@ function checkState() {
         delayBetweenFrames = Number(customDelay.value);
 }
 
+function isGameEnded() {
+    // checking not including 4 first parts
+    for (let i = 4; i < snake.length; i++) {
+        const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
+        if (didCollide) return true;
+    }
+    const hitLeftWall = snake[0].x < 0;
+    const hitRightWall = snake[0].x > gameCanvas.width - 20;
+    const hitBottomWall = snake[0].y > gameCanvas.width - 20;
+    const hitTopWall = snake[0].y < 0;
+    return hitLeftWall || hitRightWall || hitBottomWall || hitTopWall;
+}
+
 createFood(); 
 
 function main() {
     setTimeout(function onTick() {
+        if (isGameEnded()) return;
         checkState();
         clearCanvas();
         drawFood();
@@ -153,6 +181,3 @@ function startGame(e) {
 
 document.addEventListener("keydown", changeDirection);
 document.addEventListener("keydown", startGame);
-
-
-
