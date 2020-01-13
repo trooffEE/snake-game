@@ -1,30 +1,35 @@
+/* Importing font */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(45deg, #73a6c6, #366cd8, #7835d6);
     margin: 0;
     padding: 0;
     height: 100vh;
-    position: relative;
     color:white;
+    font-family: 'Muli', sans-serif;
+    overflow: hidden;
 }
 
 canvas {
     border: 2px solid white;
 }
 
-.help, .games-speed-label {
+.help,
+.games-speed-label,
+.score-container {
     padding: 0;
     margin: 0;
     font-size: calc(1vw + 0.7rem);
-}
-
-.gameSet {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
 }
 
 #gameSpeed {
@@ -33,6 +38,7 @@ canvas {
     border: none;
     background-color: transparent;
     font-size: calc(0.7vw + 0.7rem);
+    font-family: 'Muli', sans-serif;
 }
 
 /*HIDE ARROWS ON INPUT NUMBER FIELDS*/
